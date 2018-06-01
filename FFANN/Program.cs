@@ -126,6 +126,15 @@ namespace FFANN
                     }
 
 
+                    // CHANGE LYAMBDA COMMAND ENTERED?
+                    else if (lowerCommand.Trim().IndexOf("setlyambda") == 0)
+                    {
+                        string result = allCommands.SetLyambda(command.Remove(0, 10).Trim());
+                        if (result.Length > 0)
+                            Console.WriteLine(result);
+                    }
+
+
                     // RESET LESSONS NUMBER COMMAND ENTERED?
                     else if (lowerCommand.Trim().IndexOf("resetless") == 0)
                     {
@@ -193,8 +202,7 @@ namespace FFANN
                         if (result.Length > 0)
                             Console.WriteLine(result);
                     }
-
-
+                    
 
                     // DIVIDE COMMAND ENTERED?
                     else if (lowerCommand.Trim().IndexOf("divex") == 0)

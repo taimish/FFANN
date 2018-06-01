@@ -426,9 +426,9 @@ namespace FFANN
             if (tmpString.Length == 0)
                 return "\n-> Error changing network's lyambda: no input text.";
 
-            int newLyambda = -1;
+            float newLyambda = 0;
             bool isLast = true;
-            string result = Parsing.ParseInt(ref tmpString, ref newLyambda, ref isLast, "lyambda", Parsing.AfterParsingCheck.Positive);
+            string result = Parsing.ParseFloat(ref tmpString, ref newLyambda, ref isLast, "lyambda", Parsing.AfterParsingCheck.Positive);
             if (result.Length > 0)
                 return result;
 

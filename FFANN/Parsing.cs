@@ -25,7 +25,7 @@ namespace FFANN
         {
             // CHECKING INPUT
             if (tmpString.Length == 0)
-                return "Error parsing " + parseName + ": empty input text.";
+                return "\n-> Error parsing " + parseName + ": empty input text.";
 
             string result = "";
             // RUNNING THROUGH ALL ALREADY CREATED ARRAY
@@ -37,7 +37,7 @@ namespace FFANN
                     return result;
 
                 if ((isLast) && (i < resultArray.Length - 1))
-                    return "Error parsing " + parseName + ": no input text for unit " + i.ToString() + " .";
+                    return "\n-> Error parsing " + parseName + ": no input text for unit " + i.ToString() + " .";
             }
             return "";
         }
@@ -168,7 +168,7 @@ namespace FFANN
 
                 // TRYING TO PARSE THE INPUTED STRING
                 if (!float.TryParse(tmpString, out resultFloat))
-                    return "Error parsing <" + variableName + "> argument (" + tmpString + ").";
+                    return "\n-> Error parsing <" + variableName + "> argument (" + tmpString + ").";
 
                 // EMPTYING ARGUMENT STRING
                 tmpString = "";
@@ -179,7 +179,7 @@ namespace FFANN
                 isLast = false;
 
                 if (!float.TryParse(tmpString.Remove(tmpInt), out resultFloat))
-                    return "Error parsing <" + variableName + "> argument (" + tmpString.Remove(tmpInt) + ").";
+                    return "\n-> Error parsing <" + variableName + "> argument (" + tmpString.Remove(tmpInt) + ").";
 
                 tmpString = tmpString.Remove(0, tmpInt + 1).Trim();
                 if (delimiter.Length == 1)
@@ -192,27 +192,27 @@ namespace FFANN
                     break;
                 case AfterParsingCheck.NonNegative:
                     if (resultFloat < 0)
-                        return "Error: argument <" + variableName + "> is not non-negative (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-negative (" + resultFloat.ToString() + ").";
                     break;
                 case AfterParsingCheck.Positive:
                     if (resultFloat <= 0)
-                        return "Error: argument <" + variableName + "> is not positive (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not positive (" + resultFloat.ToString() + ").";
                     break;
                 case AfterParsingCheck.Negative:
                     if (resultFloat >= 0)
-                        return "Error: argument <" + variableName + "> is not negative (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not negative (" + resultFloat.ToString() + ").";
                     break;
                 case AfterParsingCheck.NonPositive:
                     if (resultFloat > 0)
-                        return "Error: argument <" + variableName + "> is not non-positive (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-positive (" + resultFloat.ToString() + ").";
                     break;
                 case AfterParsingCheck.Zero:
                     if (resultFloat != 0)
-                        return "Error: argument <" + variableName + "> is not a zero (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not a zero (" + resultFloat.ToString() + ").";
                     break;
                 case AfterParsingCheck.NonZero:
                     if (resultFloat == 0)
-                        return "Error: argument <" + variableName + "> is not non-zero (" + resultFloat.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-zero (" + resultFloat.ToString() + ").";
                     break;
                 default:
                     break;
@@ -226,7 +226,7 @@ namespace FFANN
         /// Parses inputed string, trying to read an int, passed as a reference.
         /// </summary>
         /// <param name="tmpString">Input string argument to be parsed.</param>
-        /// <param name="resultFloat">Reference on the result int.</param>
+        /// <param name="resultInt">Reference on the result int.</param>
         /// <param name="isLast">Reference on a variable, indicating on success if read value was last in inputed string or not.</param>
         /// <param name="variableName">Name of parsed variable for error messages.</param>
         /// <param name="checkMode">Mode of checking read value to be positive, negative, etc.</param>
@@ -251,7 +251,7 @@ namespace FFANN
 
                 // TRYING TO PARSE THE INPUTED STRING
                 if (!int.TryParse(tmpString, out resultInt))
-                    return "Error creating new network: error parsing <" + variableName + "> argument (" + tmpString + ").";
+                    return "\n-> Error parsing <" + variableName + "> argument (" + tmpString + ").";
 
                 // EMPTYING ARGUMENT STRING
                 tmpString = "";
@@ -262,7 +262,7 @@ namespace FFANN
                 isLast = false;
 
                 if (!int.TryParse(tmpString.Remove(tmpInt), out resultInt))
-                    return "Error creating new network: error parsing <" + variableName + "> argument (" + tmpString.Remove(tmpInt) + ").";
+                    return "\n-> Error parsing <" + variableName + "> argument (" + tmpString.Remove(tmpInt) + ").";
 
                 tmpString = tmpString.Remove(0, tmpInt + 1).Trim();
                 if (delimiter.Length == 1)
@@ -275,27 +275,27 @@ namespace FFANN
                     break;
                 case AfterParsingCheck.NonNegative:
                     if (resultInt < 0)
-                        return "Error: argument <" + variableName + "> is not non-negative (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-negative (" + resultInt.ToString() + ").";
                     break;
                 case AfterParsingCheck.Positive:
                     if (resultInt <= 0)
-                        return "Error: argument <" + variableName + "> is not positive (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not positive (" + resultInt.ToString() + ").";
                     break;
                 case AfterParsingCheck.Negative:
                     if (resultInt >= 0)
-                        return "Error: argument <" + variableName + "> is not negative (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not negative (" + resultInt.ToString() + ").";
                     break;
                 case AfterParsingCheck.NonPositive:
                     if (resultInt > 0)
-                        return "Error: argument <" + variableName + "> is not non-positive (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-positive (" + resultInt.ToString() + ").";
                     break;
                 case AfterParsingCheck.Zero:
                     if (resultInt != 0)
-                        return "Error: argument <" + variableName + "> is not a zero (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not a zero (" + resultInt.ToString() + ").";
                     break;
                 case AfterParsingCheck.NonZero:
                     if (resultInt == 0)
-                        return "Error: argument <" + variableName + "> is not non-zero (" + resultInt.ToString() + ").";
+                        return "\n-> Error: argument <" + variableName + "> is not non-zero (" + resultInt.ToString() + ").";
                     break;
                 default:
                     break;
